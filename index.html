@@ -23,6 +23,47 @@
 				<h1>Final Year Project Blog</h1>
 			</div>
 			<div class="blog-post">
+				<h3>Group, Calendar and Testing</h3>
+				<em>04/11/2016</em>
+				<p>
+					Most of the group and calendar functionality is implemented and functional tests created and executed. The application has also 
+					been tested by some users to cover some user acceptance testing. No issues were found. As I have not blogged in a while there is
+					a good bit more functionality.
+				</p>
+				<h5>Group</h5>
+				<p>
+					Users can now create a group, add members to groups and have all of their groups displayed in a list view on their main screen.
+					Group members can change the name of the group and the group admin is able to remove members from the group. There 
+					are functional tests implemented to test this functionality, an example of some of the tests documented are shown in figure 1. 
+					This functionality will also be put through some more UAT from users of the system to ensure the functionality is up to 
+					standard and to get any feedback necessary.
+				</p>
+				<p>
+					The screen for an actual group is a tabbed view with tabs calendar, messaging and to-do list. Here users can swipe between views
+					and pick the screen chosen.
+				</p>
+				<h5>Calendar</h5>
+				<p>
+					For the calendar screen, I will need to change the design to have just a list of entries to the calendar which is sorted by the entries
+					that will be next in time. I've also decided to implement a recurring feature to allow for repeated entries so users won't need to 
+					repeatedly create them. Expired entries will be hidden and shown upon request. There was an issue that I ran into where the date time
+					could not be stored and retrieved properly from the database so I created a DateTime type handler that allows the data to be stored 
+					and retrieved correctly. The functionality is not too complex and simply handles how the data should be manipulated. 
+					Here is a screenshot of the class.
+				</p>
+				<br />
+				<img src="images/date_time_type_handler.png" height="366" width="500" />
+				<h5>Next steps</h5>
+				<p>
+					Next steps will be to create and implement the to-do list database, web service and user interface. This should not take long as the 
+					storage and supply of data is very similar to the calendar entries so any issues that I ran into with the calendar entry will be known.
+					The messaging functionality will then follow which will now be using <a href="https://developers.google.com/cloud-messaging/">
+					Google cloud messaging service</a> to handle the communication between users through session keys stored on my side.
+				</p>
+				<em>Figure 1.</em>
+				<img src="images/functional_test_example.png" height="250" width="1000" />
+			</div>
+			<div class="blog-post">
 				<h3>Log In Successful</h3>
 				<em>02/24/2016</em>
 				<p>
