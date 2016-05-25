@@ -23,6 +23,80 @@
 				<h1>Final Year Project Blog</h1>
 			</div>
 			<div class="blog-post">
+				<h3>Submission</h3>
+				<em>05/24/2016</em>
+				<p>
+					There has been huge progress since the last blog post. This is a post after submitting the project to go through what was submitted. I go through information on each section below.
+				</p>
+				<h5>Calendar</h5>
+				<p>
+					The calendar screen now has an actual calendar again. I was able to implement a external widget from <a href="https://android-arsenal.com/">android aresnal</a> that allowed 
+					functionality to switch between months and mark days. This is all the functionality I needed and so I deceided to integrate it with the entry list 
+					that I had before so that it also displays a list of entries for the selected day. The date time issue still remains for the andoird application however. 
+					The server returns a 400 Bad Request when I send a date time from the application, however if I do it from an outside
+					REST client, the entry works perfectly. So for the submission, you can create an entry for the calendar, but you can only do it for the current day. 
+					You can also delete an entry, however I had similar issues with the editing so I left this piece of functionality out for now. The user can also delete any entries.
+				</p>
+				<h5>Messaging</h5>
+				<p>
+					I was able to successfully integrate <a href="https://developers.google.com/cloud-messaging/">Google Cloud Messaging</a>, or GCM for short, into the application. 
+					With GCM you can retrieve a registration id for a specific user and you can create device groups where you associate a set of registration ids with aa notifciation key on the GCM servers.
+					Then whenever a message is sent in a group, the message is sent to that notification key and GCM distributes the message to all the registration ids associated with that notification key.
+					When a user registers for the application a registration id is retrieved from the GCM servers and then I store this value for that user.
+					Then when a user creates a group, I create a new device group on GCM and associate the appropriate registration id along with it.
+					Then when the user goes to the messaging screen they can add text to the text field and click send. This will send the message to all the group members
+				</p>
+				<p>
+					Here's an axample of the request that's required to associate a group with a registration id for creation:
+				</p>
+
+				<br />
+				<img src="images/gcm_create_example.png" />
+
+				<p>
+					After this you can add people to the device group with a request in this form:
+				</p>
+
+				<br />
+				<img src="images/gcm_add_example.png"/>
+
+				<p>
+					And here is how you send a message to a group:
+				</p>
+
+				<br />
+				<img src="images/gcm_send_example.png" />
+
+				<p>
+					For the submitted version of the messaging, there a few known issues. The first issue is that the messages are sometimes slow to deliver. This is out of my control as the sending is handled
+					by GCM so this is something that has to stay. The next issue is that the messages themselves aren't stored, so when the used loses focus on the group screen, the memory is collected by the garbage collector and hence the messages are deleted from view. I have a small bit of back end implementation to store the messges done however this was not included in submission. The other issues are to do with the UX on the messaging screen itself, however I feel this is lower priority to the actual functionality available.
+				</p>
+				<h5>To-Do List</h5>
+				<p>
+					The to do list screen displays the items stored in the database for that group. The entries each have a priority as high, medium or low. The entries are displayed ina  list format with the priority clearly indicated on each entry. When no entries exist there is an example entry to show the user what an entry would look like. There is an add button that lets the user create an entry, however just as with the calendar entry creation, the timestamps cause errors when the request is sent from the application so the functionality for picking a due date is not available. As with the calendar entry editing, this functionality is left out due to the timestamp issue. The user can delete entries on the list also.
+				</p>
+				<h5>Validation</h5>
+				<p>
+					I have been updating the functional test suite with the new functionality and have manually tested the user interface executing each test case. This test suite acts as a regresssion suite for ensuring older functionality still functions correctly after changes are made. The server is tested using JUnit and are updated upon any code updates to ensure they're testing properly.
+				</p>
+				<h5>Submission</h5>
+				<p>
+					As of the 23rd of May I have submitted the assignment. I am happy with what has been submitted. There's some functionality left out however this is for good reason.
+					<b><a href="docs/technical_specification.pdf">Here</a></b> is the technical specification for the application and <b><a href="docs/user_manual.pdf">here</a></b> is the 
+					user manual. These outline the technical details of what was implemented and how it was implemented. They are the final copies that were submitted.
+				</p>
+				<h5>Expo Feedback</h5>
+				<p>
+					Here are a couple of noteworthy ideas from expo feedback for possible future implementation:
+				</p>
+				<p>
+					Develop some function that can allow the users of a whatsapp group to automatically create a group in Agenda. This would be very benficial for groups initially starting as a whatsapp group but feel they needed more group related functionality.
+				</p>
+				<p>
+					Integration with holidays in the calendar. Firstly, have a default set of holiday days set in the calendar by default. This would allows users to see things like bank holidays and could help them recognise them and plan around it. Secondly, implement some form of calendar importing so that a user could import the details from another calendar into this calendar allowing the user to share details that they might want to share.
+				</p>
+			</div>
+			<div class="blog-post">
 				<h3>Group, Calendar and Testing</h3>
 				<em>04/11/2016</em>
 				<p>
